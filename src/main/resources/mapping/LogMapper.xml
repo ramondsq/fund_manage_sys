@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qurui.fund_manage_sys.dao.LogDao">
+    <insert id="addLog">
+        insert into user_log (log_user, log_opt)
+        values (#{log_user}, #{log_opt})
+    </insert>
+    <delete id="delUserLog">
+        delete from user_log
+        where log_user = #{user_name}
+    </delete>
+</mapper>
