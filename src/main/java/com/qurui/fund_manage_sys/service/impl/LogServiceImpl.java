@@ -22,7 +22,7 @@ public class LogServiceImpl implements LogService {
 
         if(list.size() > 0) {
             map.put("code", "1");
-            map.put("users", list);
+            map.put("logs", list);
         }else {
             map.put("code", "0");
         }
