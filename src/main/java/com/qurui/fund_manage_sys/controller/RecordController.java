@@ -45,4 +45,9 @@ public class RecordController {
     public Map<String, String> submitRecord(Record record){
         return recordService.submitRecord(record);
     }
+
+    @RequestMapping(path = "/getRecordsByCate", method= RequestMethod.POST)
+    public Map<String, Object> getRecordsByCate(Record record){
+        return recordService.getRecordsByCate(record);
+    }
 }

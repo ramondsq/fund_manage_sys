@@ -29,4 +29,6 @@ public interface RecordDao {
     @Insert("INSERT INTO fund_record (fund_amount, fund_date, fund_category, fund_username) " +
             "VALUES (#{fund_amount}, #{fund_date}, #{fund_category}, #{fund_username})")
     int submitRecord(Record record);
+    @Select("select * from fund_record where fund_category = #{fund_category}")
+    List<Map<String, Object>> getRecordsByCate(Record record);
 }
