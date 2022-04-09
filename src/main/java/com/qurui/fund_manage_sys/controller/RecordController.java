@@ -50,4 +50,9 @@ public class RecordController {
     public Map<String, Object> getRecordsByCate(Record record){
         return recordService.getRecordsByCate(record);
     }
+
+    @RequestMapping(path = "/getUserRecordsByCate", method= RequestMethod.POST)
+    public Map<String, Object> getUserRecordsByCate(Record record){
+        return recordService.getUserRecordsByCate(record);
+    }
 }

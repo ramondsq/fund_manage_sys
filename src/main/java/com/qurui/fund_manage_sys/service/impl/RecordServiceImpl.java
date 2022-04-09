@@ -122,4 +122,20 @@ public class RecordServiceImpl implements RecordService {
 
         return map;
     }
+
+    @Override
+    public Map<String, Object> getUserRecordsByCate(Record record) {
+        List<Map<String, Object>> list = recordDao.getUserRecordsByCate(record);
+
+        Map<String, Object> map = new HashMap<>();
+
+        if(list.size() > 0) {
+            map.put("code", "1");
+            map.put("records", list);
+        }else {
+            map.put("code", "0");
+        }
+
+        return map;
+    }
 }

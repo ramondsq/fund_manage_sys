@@ -31,4 +31,6 @@ public interface RecordDao {
     int submitRecord(Record record);
     @Select("select * from fund_record where fund_category = #{fund_category}")
     List<Map<String, Object>> getRecordsByCate(Record record);
+    @Select("select * from fund_record where fund_category = #{fund_category} and fund_username = #{fund_username}")
+    List<Map<String, Object>> getUserRecordsByCate(Record record);
 }

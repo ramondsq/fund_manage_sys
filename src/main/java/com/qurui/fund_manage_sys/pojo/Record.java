@@ -15,4 +15,5 @@ public class Record {
     private String fund_username;
     private int fund_audit;
     private Date fund_change_date;
+    private String fund_proj;
 }
