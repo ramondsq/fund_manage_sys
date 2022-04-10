@@ -14,12 +14,12 @@ public class AdminServiceImpl implements AdminService {
     AdminDao adminDao;
 
     @Override
-    public Map<String, String> adminLogin(Admin adminLogin) {
-        Admin admin = adminDao.checkAdminLogin(adminLogin);
+    public Map<String, String> adminLogin(Admin admin) {
+        Admin admin1 = adminDao.checkAdminLogin(admin);
 
         Map<String, String> map = new HashMap<>();
 
-        if (admin != null){
+        if (admin1 != null){
             map.put("code", "1");
         }else {
             map.put("code","0");

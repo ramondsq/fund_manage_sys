@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.AdminDao">
-    <select id="checkAdminLogin" parameterType="AdminLogin" resultType="AdminLogin">
+    <select id="checkAdminLogin" parameterType="Admin" resultType="Admin">
         select *
-        from admin_login
+        from admin
         where admin_name = #{admin_name}
           and admin_pwd = #{admin_pwd}
     </select>
