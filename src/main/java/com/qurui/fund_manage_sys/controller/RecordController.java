@@ -21,15 +21,6 @@ public class RecordController {
         return recordService.getRecordsBy(record);
     }
 
-    @RequestMapping(path = "/getAllRecord", method= RequestMethod.GET)
-    public Map<String, Object> getAllRecord(){
-        return recordService.getAllRecords();
-    }
-
-    @RequestMapping(path = "/getUserRecord", method= RequestMethod.POST)
-    public Map<String, Object> getUserRecord(Record record){
-        return recordService.getUserRecords(record);
-    }
 
     @RequestMapping(path = "/auditRecord", method= RequestMethod.POST)
     public Map<String, String> auditRecord(Record record){
@@ -51,13 +42,5 @@ public class RecordController {
         return recordService.submitRecord(record);
     }
 
-    @RequestMapping(path = "/getRecordsByCate", method= RequestMethod.POST)
-    public Map<String, Object> getRecordsByCate(Record record){
-        return recordService.getRecordsByCate(record);
-    }
 
-    @RequestMapping(path = "/getUserRecordsByCate", method= RequestMethod.POST)
-    public Map<String, Object> getUserRecordsByCate(Record record){
-        return recordService.getUserRecordsByCate(record);
-    }
 }

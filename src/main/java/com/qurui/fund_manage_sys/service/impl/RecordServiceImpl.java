@@ -31,37 +31,7 @@ public class RecordServiceImpl implements RecordService {
         return map;
     }
 
-    @Override
-    public Map<String, Object> getAllRecords() {
-        List<Map<String, Object>> list = recordDao.getAllRecords();
 
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("records", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
-
-    @Override
-    public Map<String, Object> getUserRecords(Record record) {
-        List<Map<String, Object>> list = recordDao.getUserRecords(record);
-
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("records", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
 
     @Override
     public Map<String, String> auditRecord(Record record) {
@@ -123,51 +93,5 @@ public class RecordServiceImpl implements RecordService {
         return map;
     }
 
-    @Override
-    public Map<String, Object> getRecordsByCate(Record record) {
-        List<Map<String, Object>> list = recordDao.getRecordsByCate(record);
 
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("records", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
-
-    @Override
-    public Map<String, Object> getUserRecordsByCate(Record record) {
-        List<Map<String, Object>> list = recordDao.getUserRecordsByCate(record);
-
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("records", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
-
-    @Override
-    public Map<String, Object> getRecordsByProj(Record record) {
-        List<Map<String, Object>> list = recordDao.getRecordsByProj(record);
-
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("records", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
 }
