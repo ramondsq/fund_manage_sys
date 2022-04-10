@@ -12,8 +12,7 @@ import java.util.Map;
 @Component
 @Mapper
 public interface LogDao {
-    @Select("select * from logs")
-    List<Map<String, Object>> getLogs();
+    List<Map<String, Object>> getLogsBy(Log log);
 
     int addLog(int log_user_id, String log_opt);
 

@@ -1,6 +1,7 @@
 package com.qurui.fund_manage_sys.service.impl;
 
 import com.qurui.fund_manage_sys.dao.LogDao;
+import com.qurui.fund_manage_sys.pojo.Log;
 import com.qurui.fund_manage_sys.service.LogService;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,8 @@ public class LogServiceImpl implements LogService {
     LogDao logDao;
 
     @Override
-    public Map<String, Object> getLogs() {
-        List<Map<String, Object>> list = logDao.getLogs();
+    public Map<String, Object> getLogsBy(Log log) {
+        List<Map<String, Object>> list = logDao.getLogsBy(log);
 
         Map<String, Object> map = new HashMap<>();
 
@@ -29,4 +30,6 @@ public class LogServiceImpl implements LogService {
 
         return map;
     }
+
+
 }

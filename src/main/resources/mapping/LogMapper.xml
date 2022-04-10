@@ -3,6 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.LogDao">
+    <select id="getLogsBy" parameterType="Log" resultType="java.util.HashMap">
+        select * from logs
+        <where>
+            <if test="log_no != 0">
+                and log_no = #{log_no}
+            </if>
+            <if test="log_user_id != 0">
+                and log_user_id = #{log_user_id}
+            </if>
+            <if test="log_opt != null">
+                and log_opt = #{log_opt}
+            </if>
+            <if test="log_date != null">
+                and log_date = #{log_date}
+            </if>
+        </where>
+    </select>
     <insert id="addLog">
         insert into logs (log_user_id, log_opt)
         values (#{log_user_id}, #{log_opt})
