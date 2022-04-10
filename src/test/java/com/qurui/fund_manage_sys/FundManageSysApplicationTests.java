@@ -13,7 +13,7 @@ class FundManageSysApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(logDao.addLog("user1", "提交"));
+
     }
 
 }

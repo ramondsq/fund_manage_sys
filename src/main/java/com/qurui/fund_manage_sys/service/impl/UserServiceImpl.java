@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
         if (user != null){
             map.put("code", "1");
-            logDao.addLog(userLogin.getUser_name(), "登录");
+//            logDao.addLog(userLogin.getUser_id(), "登录");
         }else {
             map.put("code","0");
         }
@@ -59,6 +59,7 @@ public class UserServiceImpl implements UserService {
 
         if (result != null) {
             map.put("code", "0");
+            map.put("msg", "用户名已存在");
         }else{
             userDao.addUser(user);
             map.put("code", "1");
@@ -69,7 +70,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, String> deleteUser(User user) {
-        logDao.delUserLog(user.getUser_name());
+        logDao.delUserLog(user.getUser_id());
 
         int result = userDao.deleteUser(user);
 
@@ -92,7 +93,7 @@ public class UserServiceImpl implements UserService {
 
         if (result == 1) {
             map.put("code", "1");
-            logDao.addLog(user_name, "修改密码");
+//            logDao.addLog(user_name, "修改密码");
         }else{
             map.put("code", "0");
         }
