@@ -6,7 +6,8 @@ import java.util.Map;
 
 public interface CategoryService {
     Map<String, Object> getCategories();
-    Map<String, String> setCategory(String category_name);
-    Map<String, String> deleteCategory(Category category);
-    Map<String, String> rmCate(Category category);
+    Map<String, Object> getActiveCategories();
+    Map<String, String> setCategory(Category category);
+    Map<String, String> modifyCategoryStatus(Category category);
+    Map<String, String> removeCategory(Category category);
 }

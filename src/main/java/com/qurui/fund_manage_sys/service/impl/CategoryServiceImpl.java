@@ -32,15 +32,31 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Map<String, String> setCategory(String category_name) {
-        Category category = categoryDao.checkIfExists(category_name);
+    public Map<String, Object> getActiveCategories() {
+        List<Map<String, Object>> list = categoryDao.getActiveCategories();
+
+        Map<String, Object> map = new HashMap<>();
+
+        if(list.size() > 0) {
+            map.put("code", "1");
+            map.put("categories", list);
+        }else {
+            map.put("code", "0");
+        }
+
+        return map;
+    }
+
+    @Override
+    public Map<String, String> setCategory(Category category) {
+        Category category1 = categoryDao.checkIfExists(category);
 
         Map<String, String> map = new HashMap<>();
 
-        if(category != null) {
+        if(category1 != null) {
             map.put("code", "0");
         }else {
-            categoryDao.setCategory(category_name);
+            categoryDao.setCategory(category);
             map.put("code", "1");
         }
 
@@ -48,8 +64,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Map<String, String> deleteCategory(Category category) {
-        int result = categoryDao.deleteCategory(category);
+    public Map<String, String> modifyCategoryStatus(Category category) {
+        int result = categoryDao.modifyCategoryStatus(category);
 
         Map<String, String> map = new HashMap<>();
 
@@ -63,8 +79,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Map<String, String> rmCate(Category category) {
-        int result = categoryDao.rmCate(category);
+    public Map<String, String> removeCategory(Category category) {
+        int result = categoryDao.removeCategory(category);
 
         Map<String, String> map = new HashMap<>();
 

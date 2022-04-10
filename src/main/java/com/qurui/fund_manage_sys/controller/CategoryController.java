@@ -21,18 +21,23 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
+    @RequestMapping(path = "/getActiveCategories", method= RequestMethod.GET)
+    public Map<String, Object> getActiveCategories(){
+        return categoryService.getActiveCategories();
+    }
+
     @RequestMapping(path = "/setCategory", method= RequestMethod.POST)
-    public Map<String, String> setCategory(String category_name){
-        return categoryService.setCategory(category_name);
+    public Map<String, String> setCategory(Category category){
+        return categoryService.setCategory(category);
     }
 
-    @RequestMapping(path = "/deleteCategory", method= RequestMethod.POST)
-    public Map<String, String> deleteCategory(Category category){
-        return categoryService.deleteCategory(category);
+    @RequestMapping(path = "/modifyCategoryStatus", method= RequestMethod.POST)
+    public Map<String, String> modifyCategoryStatus(Category category){
+        return categoryService.modifyCategoryStatus(category);
     }
 
-    @RequestMapping(path = "/rmCate", method= RequestMethod.POST)
-    public Map<String, String> rmCate(Category category){
-        return categoryService.rmCate(category);
+    @RequestMapping(path = "/removeCategory", method= RequestMethod.POST)
+    public Map<String, String> removeCategory(Category category){
+        return categoryService.removeCategory(category);
     }
 }

@@ -3,17 +3,5 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.CategoryDao">
-    <select id="getCategories" resultType="java.util.HashMap">
-        select *
-        from fund_category
-    </select>
-    <insert id="setCategory">
-        insert into fund_category (category_name, category_status)
-        values (#{category_name}, 1)
-    </insert>
-    <select id="checkIfExists" resultType="Category">
-        select *
-        from fund_category
-        where category_name = #{category_name}
-    </select>
+
 </mapper>
