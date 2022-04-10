@@ -5,6 +5,7 @@ import com.qurui.fund_manage_sys.pojo.Record;
 import java.util.Map;
 
 public interface RecordService {
+    Map<String, Object> getRecordsBy(Record record);
     Map<String, Object> getAllRecords();
     Map<String, Object> getUserRecords(Record record);
     Map<String, String> auditRecord(Record record);

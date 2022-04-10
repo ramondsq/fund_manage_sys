@@ -10,6 +10,8 @@ import java.util.Map;
 @Component
 @Mapper
 public interface RecordDao {
+    List<Map<String, Object>> getRecordsBy(Record record);
+
     @Select("select * from fund_record")
     List<Map<String, Object>> getAllRecords();
     @Select("select * from fund_record where fund_username = #{fund_username}")

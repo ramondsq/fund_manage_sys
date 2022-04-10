@@ -16,6 +16,11 @@ public class RecordController {
     @Resource
     RecordService recordService;
 
+    @RequestMapping(path = "/getRecordsBy", method= RequestMethod.GET)
+    public Map<String, Object> getRecordsBy(Record record){
+        return recordService.getRecordsBy(record);
+    }
+
     @RequestMapping(path = "/getAllRecord", method= RequestMethod.GET)
     public Map<String, Object> getAllRecord(){
         return recordService.getAllRecords();

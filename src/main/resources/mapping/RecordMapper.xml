@@ -3,5 +3,33 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.RecordDao">
-
+    <select id="getRecordsBy" parameterType="Record" resultType="java.util.HashMap">
+        select * from record
+        <where>
+            <if test="fund_id != 0">
+                and fund_id = #{fund_id}
+            </if>
+            <if test="fund_amount != 0">
+                and fund_amount = #{fund_amount}
+            </if>
+            <if test="fund_date != null">
+                and fund_date = #{fund_date}
+            </if>
+            <if test="fund_category_id != 0">
+                and fund_category_id = #{fund_category_id}
+            </if>
+            <if test="fund_user_id != 0">
+                and fund_user_id = #{fund_user_id}
+            </if>
+            <if test="fund_audit != 0">
+                and fund_audit = #{fund_audit}
+            </if>
+            <if test="fund_change_date != null">
+                and fund_change_date = #{fund_change_date}
+            </if>
+            <if test="fund_proj_id != 0">
+                and fund_proj_id = #{fund_proj_id}
+            </if>
+        </where>
+    </select>
 </mapper>
