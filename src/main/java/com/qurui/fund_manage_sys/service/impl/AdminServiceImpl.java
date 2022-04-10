@@ -1,7 +1,7 @@
 package com.qurui.fund_manage_sys.service.impl;
 
 import com.qurui.fund_manage_sys.dao.AdminDao;
-import com.qurui.fund_manage_sys.pojo.AdminLogin;
+import com.qurui.fund_manage_sys.pojo.Admin;
 import com.qurui.fund_manage_sys.service.AdminService;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +14,8 @@ public class AdminServiceImpl implements AdminService {
     AdminDao adminDao;
 
     @Override
-    public Map<String, String> adminLogin(AdminLogin adminLogin) {
-        AdminLogin admin = adminDao.checkAdminLogin(adminLogin);
+    public Map<String, String> adminLogin(Admin adminLogin) {
+        Admin admin = adminDao.checkAdminLogin(adminLogin);
 
         Map<String, String> map = new HashMap<>();
 

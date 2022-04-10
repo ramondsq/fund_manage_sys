@@ -2,7 +2,7 @@ package com.qurui.fund_manage_sys.service.impl;
 
 import com.qurui.fund_manage_sys.dao.LogDao;
 import com.qurui.fund_manage_sys.dao.UserDao;
-import com.qurui.fund_manage_sys.pojo.UserLogin;
+import com.qurui.fund_manage_sys.pojo.User;
 import com.qurui.fund_manage_sys.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     private LogDao logDao;
 
     @Override
-    public Map<String, String> userLogin(UserLogin userLogin) {
-        UserLogin user = userDao.checkUserLogin(userLogin);
+    public Map<String, String> userLogin(User userLogin) {
+        User user = userDao.checkUserLogin(userLogin);
 
         Map<String, String> map = new HashMap<>();
 
@@ -52,15 +52,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> addUser(UserLogin userLogin) {
-        UserLogin result = userDao.checkIfExists(userLogin);
+    public Map<String, String> addUser(User user) {
+        User result = userDao.checkIfExists(user);
 
         Map<String, String> map = new HashMap<>();
 
         if (result != null) {
             map.put("code", "0");
         }else{
-            userDao.addUser(userLogin);
+            userDao.addUser(user);
             map.put("code", "1");
         }
 
@@ -68,10 +68,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> deleteUser(UserLogin userLogin) {
-        logDao.delUserLog(userLogin.getUser_name());
+    public Map<String, String> deleteUser(User user) {
+        logDao.delUserLog(user.getUser_name());
 
-        int result = userDao.deleteUser(userLogin);
+        int result = userDao.deleteUser(user);
 
         Map<String, String> map = new HashMap<>();
 

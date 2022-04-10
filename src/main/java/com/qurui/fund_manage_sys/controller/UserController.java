@@ -1,6 +1,6 @@
 package com.qurui.fund_manage_sys.controller;
 
-import com.qurui.fund_manage_sys.pojo.UserLogin;
+import com.qurui.fund_manage_sys.pojo.User;
 import com.qurui.fund_manage_sys.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(path = "/userLogin", method= RequestMethod.POST)
-    public Map<String, String> userLogin(UserLogin user){
+    public Map<String, String> userLogin(User user){
         return userService.userLogin(user);
     }
 
@@ -27,12 +27,12 @@ public class UserController {
     }
 
     @RequestMapping(path = "/addUser", method= RequestMethod.POST)
-    public Map<String, String> addUser(UserLogin user){
+    public Map<String, String> addUser(User user){
         return userService.addUser(user);
     }
 
     @RequestMapping(path = "/deleteUser", method= RequestMethod.POST)
-    public Map<String, String> deleteUser(UserLogin user){
+    public Map<String, String> deleteUser(User user){
         return userService.deleteUser(user);
     }
 

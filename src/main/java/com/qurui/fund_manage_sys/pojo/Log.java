@@ -8,7 +8,7 @@ import java.util.Date;
 @Component
 public class Log {
     private int log_no;
-    private String log_user;
+    private int log_user_id;
     private String log_opt;
     private Date log_date;
 }

@@ -11,9 +11,9 @@ public class Record {
     private int fund_id;
     private double fund_amount;
     private Date fund_date;
-    private String fund_category;
-    private String fund_username;
+    private int fund_category_id;
+    private int fund_user_id;
     private int fund_audit;
     private Date fund_change_date;
-    private String fund_proj;
+    private int fund_proj_id;
 }

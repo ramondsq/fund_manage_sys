@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class UserLogin {
+public class User {
+    private int user_id;
     private String user_name;
     private String user_pwd;
+    private int user_proj_id;
 }

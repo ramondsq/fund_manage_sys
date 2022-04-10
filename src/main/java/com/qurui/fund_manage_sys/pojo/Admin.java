@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class AdminLogin {
+public class Admin {
+    private int admin_id;
     private String admin_name;
     private String admin_pwd;
 }

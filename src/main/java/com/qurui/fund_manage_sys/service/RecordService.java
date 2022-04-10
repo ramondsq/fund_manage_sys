@@ -13,4 +13,5 @@ public interface RecordService {
     Map<String, String> submitRecord(Record record);
     Map<String, Object> getRecordsByCate(Record record);
     Map<String, Object> getUserRecordsByCate(Record record);
+    Map<String, Object> getRecordsByProj(Record record);
 }
