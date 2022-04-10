@@ -48,13 +48,15 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Map<String, String> addProject(Project project) {
-        int result = projectDao.addProject(project);
+        Project project1 = projectDao.checkIfExist(project);
 
         Map<String, String> map = new HashMap<>();
 
-        if(result == 0) {
+        if(project1 != null) {
             map.put("code", "0");
+            map.put("msg", "已存在同名项目");
         }else {
+            projectDao.addProject(project);
             map.put("code", "1");
         }
 

@@ -25,4 +25,7 @@ public interface ProjectDao {
     int updateProjStat(Project project);
 
     int updateProjName(String old_name, String new_name);
+
+    @Select("SELECT * FROM project WHERE project_name = #{project_name}")
+    Project checkIfExist(Project project);
 }
