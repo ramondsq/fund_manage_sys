@@ -16,15 +16,11 @@ public class CategoryController {
     @Resource
     CategoryService categoryService;
 
-    @RequestMapping(path = "/getCategories", method= RequestMethod.GET)
-    public Map<String, Object> getCategories(){
-        return categoryService.getCategories();
+    @RequestMapping(path = "/getCategoriesBy", method= RequestMethod.GET)
+    public Map<String, Object> getCategoriesBy(Category category){
+        return categoryService.getCategoriesBy(category);
     }
 
-    @RequestMapping(path = "/getActiveCategories", method= RequestMethod.GET)
-    public Map<String, Object> getActiveCategories(){
-        return categoryService.getActiveCategories();
-    }
 
     @RequestMapping(path = "/setCategory", method= RequestMethod.POST)
     public Map<String, String> setCategory(Category category){

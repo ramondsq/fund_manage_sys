@@ -3,5 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.CategoryDao">
-
+    <select id="getCategoriesBy" parameterType="Category" resultType="java.util.HashMap">
+        select * from category
+        <where>
+            <if test="category_id != 0">
+                and category_id = #{category_id}
+            </if>
+            <if test="category_name != null">
+                and category_name = #{category_name}
+            </if>
+            <if test="category_status != 0">
+                and category_status = #{category_status}
+            </if>
+            <if test="category_proj_id != 0">
+                and category_proj_id = #{category_proj_id}
+            </if>
+        </where>
+    </select>
 </mapper>

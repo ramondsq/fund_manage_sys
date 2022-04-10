@@ -16,8 +16,8 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryDao categoryDao;
 
     @Override
-    public Map<String, Object> getCategories() {
-        List<Map<String, Object>> list = categoryDao.getCategories();
+    public Map<String, Object> getCategoriesBy(Category category) {
+        List<Map<String, Object>> list = categoryDao.getCategoriesBy(category);
 
         Map<String, Object> map = new HashMap<>();
 
@@ -31,21 +31,6 @@ public class CategoryServiceImpl implements CategoryService {
         return map;
     }
 
-    @Override
-    public Map<String, Object> getActiveCategories() {
-        List<Map<String, Object>> list = categoryDao.getActiveCategories();
-
-        Map<String, Object> map = new HashMap<>();
-
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("categories", list);
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
 
     @Override
     public Map<String, String> setCategory(Category category) {
