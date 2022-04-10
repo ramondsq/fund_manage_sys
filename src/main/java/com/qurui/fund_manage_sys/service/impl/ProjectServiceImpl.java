@@ -15,8 +15,8 @@ public class ProjectServiceImpl implements ProjectService {
     ProjectDao projectDao;
 
     @Override
-    public Map<String, Object> getAllProjects() {
-        List<Map<String, Object>> list = projectDao.getAllProjects();
+    public Map<String, Object> getProjectsBy(Project project) {
+        List<Map<String, Object>> list = projectDao.getProjectsBy(project);
 
         Map<String, Object> map = new HashMap<>();
 
@@ -30,21 +30,9 @@ public class ProjectServiceImpl implements ProjectService {
         return map;
     }
 
-    @Override
-    public Map<String, Object> getActiveProjects() {
-        List<Map<String, Object>> list = projectDao.getActiveProjects();
 
-        Map<String, Object> map = new HashMap<>();
 
-        if(list.size() > 0) {
-            map.put("code", "1");
-            map.put("projects", list);
-        }else {
-            map.put("code", "0");
-        }
 
-        return map;
-    }
 
     @Override
     public Map<String, String> addProject(Project project) {

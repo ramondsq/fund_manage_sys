@@ -16,15 +16,14 @@ public class ProjectController {
     @Resource
     ProjectService projectService;
 
-    @RequestMapping(path = "/getAllProjects", method= RequestMethod.GET)
-    public Map<String, Object> getAllProjects(){
-        return projectService.getAllProjects();
+    @RequestMapping(path = "/getProjectsBy", method= RequestMethod.GET)
+    public Map<String, Object> getProjectsBy(Project project){
+        return projectService.getProjectsBy(project);
     }
 
-    @RequestMapping(path = "/getActiveProjects", method= RequestMethod.GET)
-    public Map<String, Object> getActiveProjects(){
-        return projectService.getActiveProjects();
-    }
+
+
+
 
     @RequestMapping(path = "/addProject", method= RequestMethod.POST)
     public Map<String, String> addProject(Project project){

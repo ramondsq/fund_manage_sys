@@ -3,6 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qurui.fund_manage_sys.dao.ProjectDao">
+    <select id="getProjectsBy" parameterType="Project" resultType="java.util.HashMap">
+        select * from project
+        <where>
+            <if test="project_id != 0">
+                and project_id = #{project_id}
+            </if>
+            <if test="project_name != null">
+                and project_name = #{project_name}
+            </if>
+            <if test="project_status != 0">
+                and project_status = #{project_status}
+            </if>
+        </where>
+    </select>
     <update id="updateProjName">
         update project
         set project_name = #{new_name}

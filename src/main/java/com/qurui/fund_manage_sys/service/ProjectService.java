@@ -5,8 +5,8 @@ import com.qurui.fund_manage_sys.pojo.Project;
 import java.util.Map;
 
 public interface ProjectService {
-    Map<String, Object> getAllProjects();
-    Map<String, Object> getActiveProjects();
+    Map<String, Object> getProjectsBy(Project project);
+
     Map<String, String> addProject(Project project);
     Map<String, String> delProj(Project project);
     Map<String, String> updateProjStat(Project project);

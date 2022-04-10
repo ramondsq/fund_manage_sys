@@ -9,11 +9,8 @@ import java.util.Map;
 @Mapper
 @Component
 public interface ProjectDao {
-    @Select("SELECT * FROM project")
-    List<Map<String, Object>> getAllProjects();
+    List<Map<String, Object>> getProjectsBy(Project project);
 
-    @Select("SELECT * FROM project WHERE project_status = 1")
-    List<Map<String, Object>> getActiveProjects();
 
     @Insert("INSERT INTO project (project_name) VALUES (#{project_name})")
     int addProject(Project project);
