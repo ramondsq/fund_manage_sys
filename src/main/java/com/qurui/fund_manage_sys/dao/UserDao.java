@@ -34,4 +34,6 @@ public interface UserDao {
     int deleteUser(User user);
 
     int changeUserPwd(String user_name, String old_pwd, String new_pwd);
+
+    User getUserByName(String user_name);
 }

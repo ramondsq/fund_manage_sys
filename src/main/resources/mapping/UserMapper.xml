@@ -10,4 +10,8 @@
         where user_name = #{user_name}
         and user_pwd = #{old_pwd}
     </update>
+
+    <select id="getUserByName" resultType="User">
+        select * from user where user_name = #{user_name}
+    </select>
 </mapper>
