@@ -11,9 +11,7 @@ import java.util.Map;
 public interface ProjectDao {
     List<Map<String, Object>> getProjectsBy(Project project);
 
-
-    @Insert("INSERT INTO project (project_name) VALUES (#{project_name})")
-    int addProject(Project project);
+    int submitProject(Project project);
 
     @Delete("DELETE FROM project where project_name = #{project_name}")
     int delProj(Project project);

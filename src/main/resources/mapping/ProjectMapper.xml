@@ -15,11 +15,70 @@
             <if test="project_status != 0">
                 and project_status = #{project_status}
             </if>
+            <if test="project_user_id != 0">
+                and project_user_id = #{project_user_id}
+            </if>
+            <if test="project_budget != 0">
+                and project_budget = #{project_budget}
+            </if>
+            <if test="project_balance != 0">
+                and project_balance = #{project_balance}
+            </if>
+            <if test="project_create != null">
+                and project_create = #{project_create}
+            </if>
+            <if test="project_deadline != null">
+                and project_deadline = #{project_deadline}
+            </if>
         </where>
     </select>
+
+    <insert id="submitProject" parameterType="Project">
+        insert into project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="project_name != null">
+                project_name,
+            </if>
+
+            <if test="project_user_id != 0">
+                project_user_id,
+            </if>
+            <if test="project_budget != 0">
+                project_budget,
+            </if>
+            <if test="project_balance != 0">
+                project_balance,
+            </if>
+
+            <if test="project_deadline != null">
+                project_deadline,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="project_name != null">
+                #{project_name},
+            </if>
+
+            <if test="project_user_id != 0">
+                #{project_user_id},
+            </if>
+            <if test="project_budget != 0">
+                #{project_budget},
+            </if>
+            <if test="project_balance != 0">
+                #{project_balance},
+            </if>
+            <if test="project_deadline != null">
+                #{project_deadline},
+            </if>
+        </trim>
+    </insert>
+
     <update id="updateProjName">
         update project
         set project_name = #{new_name}
         where project_name = #{old_name}
     </update>
+
 </mapper>

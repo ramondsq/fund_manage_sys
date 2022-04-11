@@ -44,7 +44,7 @@ public class ProjectServiceImpl implements ProjectService {
             map.put("code", "0");
             map.put("msg", "已存在同名项目");
         }else {
-            projectDao.addProject(project);
+            projectDao.submitProject(project);
             map.put("code", "1");
         }
 
