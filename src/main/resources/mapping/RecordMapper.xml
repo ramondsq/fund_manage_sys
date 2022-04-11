@@ -32,4 +32,79 @@
             </if>
         </where>
     </select>
+
+    <update id="modifyRecord" parameterType="Record">
+        update record
+        <set>
+            <if test="fund_amount != 0">
+                fund_amount = #{fund_amount},
+            </if>
+            <if test="fund_date != null">
+                fund_date = #{fund_date},
+            </if>
+            <if test="fund_category_id != 0">
+                fund_category_id = #{fund_category_id},
+            </if>
+            <if test="fund_user_id != 0">
+                fund_user_id = #{fund_user_id},
+            </if>
+            <if test="fund_audit != 0">
+                fund_audit = #{fund_audit},
+            </if>
+                fund_change_date = now(),
+            <if test="fund_proj_id != 0">
+                fund_proj_id = #{fund_proj_id}
+            </if>
+        </set>
+        where fund_id=#{fund_id} and fund_audit=1
+    </update>
+
+    <insert id="submitRecord" parameterType="Record">
+        insert into record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fund_amount != 0">
+                fund_amount,
+            </if>
+            <if test="fund_date != null">
+                fund_date,
+            </if>
+            <if test="fund_category_id != 0">
+                fund_category_id,
+            </if>
+            <if test="fund_user_id != 0">
+                fund_user_id,
+            </if>
+            <if test="fund_audit != 0">
+                fund_audit,
+            </if>
+            <if test="fund_change_date != null">
+                fund_change_date,
+            </if>
+            <if test="fund_proj_id != 0">
+                fund_proj_id,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fund_amount != 0">
+                #{fund_amount},
+            </if>
+            <if test="fund_date != null">
+                #{fund_date},
+            </if>
+            <if test="fund_category_id != 0">
+                #{fund_category_id},
+            </if>
+            <if test="fund_user_id != 0">
+                #{fund_user_id},
+            </if>
+            <if test="fund_audit != 0">
+                #{fund_audit},
+            </if>
+                now(),
+            <if test="fund_proj_id != 0">
+                #{fund_proj_id},
+            </if>
+        </trim>
+    </insert>
 </mapper>
