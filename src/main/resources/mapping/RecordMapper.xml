@@ -18,8 +18,8 @@
             <if test="fund_category_id != 0">
                 and fund_category_id = #{fund_category_id}
             </if>
-            <if test="fund_user_id != 0">
-                and fund_user_id = #{fund_user_id}
+            <if test="fund_manager != null">
+                and fund_manager = #{fund_manager}
             </if>
             <if test="fund_audit != 0">
                 and fund_audit = #{fund_audit}
@@ -45,8 +45,8 @@
             <if test="fund_category_id != 0">
                 fund_category_id = #{fund_category_id},
             </if>
-            <if test="fund_user_id != 0">
-                fund_user_id = #{fund_user_id},
+            <if test="fund_manager != null">
+                fund_manager = #{fund_manager},
             </if>
             <if test="fund_audit != 0">
                 fund_audit = #{fund_audit},
@@ -71,8 +71,8 @@
             <if test="fund_category_id != 0">
                 fund_category_id,
             </if>
-            <if test="fund_user_id != 0">
-                fund_user_id,
+            <if test="fund_manager != null">
+                fund_manager,
             </if>
             <if test="fund_audit != 0">
                 fund_audit,
@@ -95,8 +95,8 @@
             <if test="fund_category_id != 0">
                 #{fund_category_id},
             </if>
-            <if test="fund_user_id != 0">
-                #{fund_user_id},
+            <if test="fund_manager != null">
+                #{fund_manager},
             </if>
             <if test="fund_audit != 0">
                 #{fund_audit},

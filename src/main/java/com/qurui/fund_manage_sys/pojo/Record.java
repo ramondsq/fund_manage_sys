@@ -12,7 +12,7 @@ public class Record {
     private double fund_amount;
     private Date fund_date;
     private int fund_category_id;
-    private int fund_user_id;
+    private String fund_manager;
     private int fund_audit;
     private Date fund_change_date;
     private int fund_proj_id;
