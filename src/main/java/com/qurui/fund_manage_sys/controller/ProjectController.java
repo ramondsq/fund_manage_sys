@@ -26,8 +26,8 @@ public class ProjectController {
 
 
     @RequestMapping(path = "/submitProject", method= RequestMethod.POST)
-    public Map<String, String> addProject(Project project){
-        return projectService.addProject(project);
+    public Map<String, String> submitProject(Project project){
+        return projectService.submitProject(project);
     }
 
     @RequestMapping(path = "/delProj", method= RequestMethod.POST)

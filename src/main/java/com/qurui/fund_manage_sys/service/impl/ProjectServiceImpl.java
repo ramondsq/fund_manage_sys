@@ -35,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Override
-    public Map<String, String> addProject(Project project) {
+    public Map<String, String> submitProject(Project project) {
         Project project1 = projectDao.checkIfExist(project);
 
         Map<String, String> map = new HashMap<>();
