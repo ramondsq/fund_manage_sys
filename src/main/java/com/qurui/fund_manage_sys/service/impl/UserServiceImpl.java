@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, String> userLogin(User userLogin) {
-        User user = userDao.checkUserLogin(userLogin);
+        User user = userDao.userLogin(userLogin);
 
         Map<String, String> map = new HashMap<>();
 

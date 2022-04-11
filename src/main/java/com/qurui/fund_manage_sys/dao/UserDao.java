@@ -16,13 +16,13 @@ public interface UserDao {
     @Select("SELECT * FROM user " +
             "WHERE user_name = #{user_name} " +
             "AND user_pwd = #{user_pwd}")
-    User checkUserLogin(User user);
+    User userLogin(User user);
 
     @Select("SELECT * FROM user")
     List<Map<String, Object>> getAllUsers();
 
-    @Insert("INSERT INTO user (user_name, user_pwd, user_proj_id) " +
-            "VALUES (#{user_name}, #{user_pwd}, #{user_proj_id})")
+    @Insert("INSERT INTO user (user_name, user_pwd) " +
+            "VALUES (#{user_name}, #{user_pwd})")
     int addUser(User user);
 
     @Select("SELECT * FROM user " +
