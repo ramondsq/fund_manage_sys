@@ -7,7 +7,7 @@ import java.util.Map;
 public interface CategoryService {
     Map<String, Object> getCategoriesBy(Category category);
 
-    Map<String, String> setCategory(Category category);
-    Map<String, String> modifyCategoryStatus(Category category);
+    Map<String, String> submitCategory(Category category);
+
     Map<String, String> removeCategory(Category category);
 }

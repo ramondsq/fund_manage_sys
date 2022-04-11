@@ -12,12 +12,7 @@
             <if test="category_name != null">
                 and category_name = #{category_name}
             </if>
-            <if test="category_status != 0">
-                and category_status = #{category_status}
-            </if>
-            <if test="category_proj_id != 0">
-                and category_proj_id = #{category_proj_id}
-            </if>
+
         </where>
     </select>
 </mapper>

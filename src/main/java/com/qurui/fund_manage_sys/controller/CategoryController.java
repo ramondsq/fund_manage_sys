@@ -22,15 +22,12 @@ public class CategoryController {
     }
 
 
-    @RequestMapping(path = "/setCategory", method= RequestMethod.POST)
-    public Map<String, String> setCategory(Category category){
-        return categoryService.setCategory(category);
+    @RequestMapping(path = "/submitCategory", method= RequestMethod.POST)
+    public Map<String, String> submitCategory(Category category){
+        return categoryService.submitCategory(category);
     }
 
-    @RequestMapping(path = "/modifyCategoryStatus", method= RequestMethod.POST)
-    public Map<String, String> modifyCategoryStatus(Category category){
-        return categoryService.modifyCategoryStatus(category);
-    }
+
 
     @RequestMapping(path = "/removeCategory", method= RequestMethod.POST)
     public Map<String, String> removeCategory(Category category){

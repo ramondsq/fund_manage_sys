@@ -14,16 +14,13 @@ public interface CategoryDao {
 
     @Insert("INSERT INTO category (category_name) " +
             "VALUES (#{category_name})")
-    int setCategory(Category category);
+    int submitCategory(Category category);
 
     @Select("SELECT * FROM category " +
             "WHERE category_name = #{category_name}")
     Category checkIfExists(Category category);
 
-    @Update("UPDATE category " +
-            "SET category_status = #{category_status} " +
-            "WHERE category_name = #{category_name}")
-    int modifyCategoryStatus(Category category);
+
 
     @Delete("DELETE FROM category " +
             "WHERE category_name = #{category_name}")

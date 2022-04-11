@@ -33,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public Map<String, String> setCategory(Category category) {
+    public Map<String, String> submitCategory(Category category) {
         Category category1 = categoryDao.checkIfExists(category);
 
         Map<String, String> map = new HashMap<>();
@@ -41,27 +41,14 @@ public class CategoryServiceImpl implements CategoryService {
         if(category1 != null) {
             map.put("code", "0");
         }else {
-            categoryDao.setCategory(category);
+            categoryDao.submitCategory(category);
             map.put("code", "1");
         }
 
         return map;
     }
 
-    @Override
-    public Map<String, String> modifyCategoryStatus(Category category) {
-        int result = categoryDao.modifyCategoryStatus(category);
 
-        Map<String, String> map = new HashMap<>();
-
-        if(result == 1) {
-            map.put("code", "1");
-        }else {
-            map.put("code", "0");
-        }
-
-        return map;
-    }
 
     @Override
     public Map<String, String> removeCategory(Category category) {
