@@ -103,10 +103,11 @@
             where project_id = #{project_id}
     </update>
 
-    <update id="updateProjName">
+
+    <update id="refreshBalance">
         update project
-        set project_name = #{new_name}
-        where project_name = #{old_name}
+        set project_balance = project_balance + #{amount}
+        where project_id = #{project_id}
     </update>
 
 </mapper>

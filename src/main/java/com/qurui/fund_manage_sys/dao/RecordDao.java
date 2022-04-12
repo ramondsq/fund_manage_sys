@@ -22,5 +22,6 @@ public interface RecordDao {
 
     int submitRecord(Record record);
 
-
+    @Select("select * from record where fund_id = #{fund_id}")
+    Record getRecordById(Record record);
 }

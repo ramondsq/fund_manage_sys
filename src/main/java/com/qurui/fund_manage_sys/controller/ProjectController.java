@@ -40,8 +40,5 @@ public class ProjectController {
         return projectService.updateProjById(project);
     }
 
-    @RequestMapping(path = "/updateProjName", method= RequestMethod.POST)
-    public Map<String, String> updateProjName(String old_name, String new_name){
-        return projectService.updateProjName(old_name, new_name);
-    }
+
 }

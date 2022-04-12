@@ -10,5 +10,5 @@ public interface ProjectService {
     Map<String, String> submitProject(Project project);
     Map<String, String> delProj(Project project);
     Map<String, String> updateProjById(Project project);
-    Map<String, String> updateProjName(String old_name, String new_name);
+
 }

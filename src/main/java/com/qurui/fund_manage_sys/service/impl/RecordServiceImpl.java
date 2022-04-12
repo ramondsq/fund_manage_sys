@@ -1,5 +1,6 @@
 package com.qurui.fund_manage_sys.service.impl;
 
+import com.qurui.fund_manage_sys.dao.ProjectDao;
 import com.qurui.fund_manage_sys.dao.RecordDao;
 import com.qurui.fund_manage_sys.pojo.Record;
 import com.qurui.fund_manage_sys.service.RecordService;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class RecordServiceImpl implements RecordService {
     @Resource
     RecordDao recordDao;
+    @Resource
+    ProjectDao projectDao;
 
     @Override
     public Map<String, Object> getRecordsBy(Record record) {
@@ -36,7 +39,10 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public Map<String, String> auditRecord(Record record) {
         int result = recordDao.auditRecord(record);
-
+        if (record.getFund_audit() == 2) {//如果审计通过，则刷新project的balance
+            Record record1 = recordDao.getRecordById(record);
+            projectDao.refreshBalance(record1.getFund_proj_id(),record1.getFund_amount());
+        }
         Map<String, String> map = new HashMap<>();
 
         if(result == 0) {

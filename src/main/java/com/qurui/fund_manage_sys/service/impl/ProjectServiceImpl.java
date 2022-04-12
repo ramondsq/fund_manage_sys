@@ -53,15 +53,15 @@ public class ProjectServiceImpl implements ProjectService {
             map.put("code", "0");
             map.put("msg", "已存在同名项目");
         }else {
-            projectDao.submitProject(project);
-
-            Record record = new Record();
-            record.setFund_amount(project.getProject_budget());
-            record.setFund_date(new Date());
-            record.setFund_category_id(20010);
-            record.setFund_manager(userDao.getUserById(project.getProject_user_id()).getUser_name());
-            record.setFund_proj_id(projectDao.checkIfExist(project).getProject_id());
-            recordDao.submitRecord(record);
+            if (projectDao.submitProject(project) == 1) {//提交项目成功
+                Record record = new Record();
+                record.setFund_amount(project.getProject_budget());
+                record.setFund_date(new Date());
+                record.setFund_category_id(20010);
+                record.setFund_manager(userDao.getUserById(project.getProject_user_id()).getUser_name());
+                record.setFund_proj_id(projectDao.checkIfExist(project).getProject_id());
+                recordDao.submitRecord(record);//提交一条资金记录
+            }
 
             map.put("code", "1");
         }
@@ -99,18 +99,5 @@ public class ProjectServiceImpl implements ProjectService {
         return map;
     }
 
-    @Override
-    public Map<String, String> updateProjName(String old_name, String new_name) {
-        int result = projectDao.updateProjName(old_name, new_name);
 
-        Map<String, String> map = new HashMap<>();
-
-        if(result == 0) {
-            map.put("code", "0");
-        }else {
-            map.put("code", "1");
-        }
-
-        return map;
-    }
 }

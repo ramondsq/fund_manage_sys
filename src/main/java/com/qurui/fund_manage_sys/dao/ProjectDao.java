@@ -18,10 +18,8 @@ public interface ProjectDao {
     @Delete("DELETE FROM project where project_name = #{project_name}")
     int delProj(Project project);
 
-
-
-    int updateProjName(String old_name, String new_name);
-
     @Select("SELECT * FROM project WHERE project_name = #{project_name}")
     Project checkIfExist(Project project);
+
+    int refreshBalance(int project_id, double amount);
 }
