@@ -74,7 +74,9 @@
             <if test="fund_manager != null">
                 fund_manager,
             </if>
-
+            <if test="fund_audit != 0">
+                fund_audit,
+            </if>
             <if test="fund_proj_id != 0">
                 fund_proj_id,
             </if>
@@ -93,7 +95,9 @@
             <if test="fund_manager != null">
                 #{fund_manager},
             </if>
-
+            <if test="fund_audit != 0">
+                #{fund_audit},
+            </if>
             <if test="fund_proj_id != 0">
                 #{fund_proj_id},
             </if>

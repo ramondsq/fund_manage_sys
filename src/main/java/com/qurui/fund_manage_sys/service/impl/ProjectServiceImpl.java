@@ -59,6 +59,7 @@ public class ProjectServiceImpl implements ProjectService {
                 record.setFund_date(new Date());
                 record.setFund_category_id(20010);
                 record.setFund_manager(userDao.getUserById(project.getProject_user_id()).getUser_name());
+                record.setFund_audit(2);
                 record.setFund_proj_id(projectDao.checkIfExist(project).getProject_id());
                 recordDao.submitRecord(record);//提交一条资金记录
             }
