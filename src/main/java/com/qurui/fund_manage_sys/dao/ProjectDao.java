@@ -13,11 +13,12 @@ public interface ProjectDao {
 
     int submitProject(Project project);
 
+    int updateProjById(Project project);
+
     @Delete("DELETE FROM project where project_name = #{project_name}")
     int delProj(Project project);
 
-    @Update("UPDATE project SET project_status = #{project_status} WHERE project_name = #{project_name}")
-    int updateProjStat(Project project);
+
 
     int updateProjName(String old_name, String new_name);
 

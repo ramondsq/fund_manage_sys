@@ -35,9 +35,9 @@ public class ProjectController {
         return projectService.delProj(project);
     }
 
-    @RequestMapping(path = "/updateProjStat", method= RequestMethod.POST)
-    public Map<String, String> updateProjStat(Project project){
-        return projectService.updateProjStat(project);
+    @RequestMapping(path = "/updateProjById", method= RequestMethod.POST)
+    public Map<String, String> updateProjById(Project project){
+        return projectService.updateProjById(project);
     }
 
     @RequestMapping(path = "/updateProjName", method= RequestMethod.POST)
