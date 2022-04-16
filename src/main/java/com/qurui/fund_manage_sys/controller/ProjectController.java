@@ -21,10 +21,6 @@ public class ProjectController {
         return projectService.getProjectsBy(project);
     }
 
-
-
-
-
     @RequestMapping(path = "/submitProject", method= RequestMethod.POST)
     public Map<String, String> submitProject(Project project){
         return projectService.submitProject(project);

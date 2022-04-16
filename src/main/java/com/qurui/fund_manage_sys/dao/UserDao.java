@@ -19,7 +19,7 @@ public interface UserDao {
     User userLogin(User user);
 
     @Select("SELECT * FROM user")
-    List<Map<String, Object>> getAllUsers();
+    List<Map<String, Object>> getUsers();
 
     @Insert("INSERT INTO user (user_name, user_pwd) " +
             "VALUES (#{user_name}, #{user_pwd})")

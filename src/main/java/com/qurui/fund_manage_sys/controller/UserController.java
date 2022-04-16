@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(path = "/userLogin", method= RequestMethod.POST)
-    public Map<String, String> userLogin(User user){
+    public Map<String, Object> userLogin(User user){
         return userService.userLogin(user);
     }
 

@@ -20,15 +20,15 @@ public class UserServiceImpl implements UserService {
     private LogDao logDao;
 
     @Override
-    public Map<String, String> userLogin(User userLogin) {
+    public Map<String, Object> userLogin(User userLogin) {
         User user = userDao.userLogin(userLogin);
 
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
 
         if (user != null){
             map.put("code", "1");
-            logDao.addLog(userDao.getUserByName(userLogin.getUser_name()).getUser_id(),
-                    "登录");
+            map.put("user_id", user.getUser_id());
+            logDao.addLog(user.getUser_id(),"登录");
         }else {
             map.put("code","0");
         }
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> getUsers() {
-        List<Map<String, Object>> list = userDao.getAllUsers();
+        List<Map<String, Object>> list = userDao.getUsers();
 
         Map<String, Object> map = new HashMap<>();
 

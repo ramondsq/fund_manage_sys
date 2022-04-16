@@ -39,7 +39,6 @@
             <if test="project_name != null">
                 project_name,
             </if>
-
             <if test="project_user_id != 0">
                 project_user_id,
             </if>
@@ -89,12 +88,6 @@
             </if>
             <if test="project_budget != 0">
                 project_budget = #{project_budget},
-            </if>
-            <if test="project_balance != 0">
-                project_balance = #{project_balance},
-            </if>
-            <if test="project_create != null">
-                project_create = #{project_create},
             </if>
             <if test="project_deadline != null">
                 project_deadline = #{project_deadline}

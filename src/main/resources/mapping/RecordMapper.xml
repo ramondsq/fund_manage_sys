@@ -48,9 +48,6 @@
             <if test="fund_manager != null">
                 fund_manager = #{fund_manager},
             </if>
-            <if test="fund_audit != 0">
-                fund_audit = #{fund_audit},
-            </if>
                 fund_change_date = now(),
             <if test="fund_proj_id != 0">
                 fund_proj_id = #{fund_proj_id}
@@ -74,9 +71,6 @@
             <if test="fund_manager != null">
                 fund_manager,
             </if>
-            <if test="fund_audit != 0">
-                fund_audit,
-            </if>
             <if test="fund_proj_id != 0">
                 fund_proj_id,
             </if>
@@ -94,9 +88,6 @@
             </if>
             <if test="fund_manager != null">
                 #{fund_manager},
-            </if>
-            <if test="fund_audit != 0">
-                #{fund_audit},
             </if>
             <if test="fund_proj_id != 0">
                 #{fund_proj_id},
