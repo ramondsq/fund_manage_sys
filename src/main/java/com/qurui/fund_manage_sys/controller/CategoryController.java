@@ -27,7 +27,10 @@ public class CategoryController {
         return categoryService.submitCategory(category);
     }
 
-
+    @RequestMapping(path = "/modifyCategory", method= RequestMethod.POST)
+    public Map<String, String> modifyCategory(Category category){
+        return categoryService.modifyCategory(category);
+    }
 
     @RequestMapping(path = "/removeCategory", method= RequestMethod.POST)
     public Map<String, String> removeCategory(Category category){

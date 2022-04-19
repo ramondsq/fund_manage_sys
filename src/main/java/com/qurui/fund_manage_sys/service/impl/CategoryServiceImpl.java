@@ -64,4 +64,19 @@ public class CategoryServiceImpl implements CategoryService {
 
         return map;
     }
+
+    @Override
+    public Map<String, String> modifyCategory(Category category) {
+        int result = categoryDao.modifyCategory(category);
+
+        Map<String, String> map = new HashMap<>();
+
+        if(result == 1) {
+            map.put("code", "1");
+        }else {
+            map.put("code", "0");
+        }
+
+        return map;
+    }
 }

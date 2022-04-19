@@ -24,4 +24,6 @@ public interface RecordDao {
 
     @Select("select * from record where fund_id = #{fund_id}")
     Record getRecordById(Record record);
+
+    int deleteRecordByProjId(int fund_proj_id);
 }

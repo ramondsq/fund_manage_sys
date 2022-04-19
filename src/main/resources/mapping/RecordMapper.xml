@@ -94,4 +94,8 @@
             </if>
         </trim>
     </insert>
+    <delete id="deleteRecordByProjId">
+        delete from record
+        where fund_proj_id = #{fund_proj_id}
+    </delete>
 </mapper>

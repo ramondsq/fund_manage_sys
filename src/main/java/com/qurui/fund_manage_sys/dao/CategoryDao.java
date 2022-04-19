@@ -20,7 +20,9 @@ public interface CategoryDao {
             "WHERE category_name = #{category_name}")
     Category checkIfExists(Category category);
 
-
+    @Update("UPDATE category SET category_name = #{category_name} " +
+            "WHERE category_id = #{category_id}")
+    int modifyCategory(Category category);
 
     @Delete("DELETE FROM category " +
             "WHERE category_name = #{category_name}")

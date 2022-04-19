@@ -10,4 +10,6 @@ public interface CategoryService {
     Map<String, String> submitCategory(Category category);
 
     Map<String, String> removeCategory(Category category);
+
+    Map<String, String> modifyCategory(Category category);
 }

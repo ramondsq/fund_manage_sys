@@ -72,6 +72,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Map<String, String> delProj(Project project) {
+        recordDao.deleteRecordByProjId(project.getProject_id());
         int result = projectDao.delProj(project);
 
         Map<String, String> map = new HashMap<>();

@@ -15,7 +15,7 @@ public interface ProjectDao {
 
     int updateProjById(Project project);
 
-    @Delete("DELETE FROM project where project_name = #{project_name}")
+    @Delete("DELETE FROM project where project_id = #{project_id}")
     int delProj(Project project);
 
     @Select("SELECT * FROM project WHERE project_name = #{project_name}")

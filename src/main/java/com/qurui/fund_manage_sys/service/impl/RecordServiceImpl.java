@@ -38,13 +38,14 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public Map<String, String> auditRecord(Record record) {
-        int result = recordDao.auditRecord(record);
+        Record originRecord = recordDao.getRecordById(record);//获取原记录
         if (record.getFund_audit() == 2) {//如果审计通过，则刷新project的balance
-            Record record1 = recordDao.getRecordById(record);
-            projectDao.refreshBalance(record1.getFund_proj_id(),record1.getFund_amount());
+            projectDao.refreshBalance(originRecord.getFund_proj_id(),originRecord.getFund_amount());
+        } else if (record.getFund_audit() == 3 && originRecord.getFund_audit() == 2) {//原来是通过了审核现在撤销
+            projectDao.refreshBalance(originRecord.getFund_proj_id(),-originRecord.getFund_amount());
         }
         Map<String, String> map = new HashMap<>();
-
+        int result = recordDao.auditRecord(record);
         if(result == 0) {
             map.put("code", "0");
         }else {
@@ -56,6 +57,11 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public Map<String, String> deleteRecord(Record record) {
+        Record originRecord = recordDao.getRecordById(record);
+        if (originRecord.getFund_audit() == 2) {//如果审计通过，则刷新project的balance
+            projectDao.refreshBalance(originRecord.getFund_proj_id(),-originRecord.getFund_amount());
+        }
+
         int result = recordDao.deleteRecord(record);
 
         Map<String, String> map = new HashMap<>();
