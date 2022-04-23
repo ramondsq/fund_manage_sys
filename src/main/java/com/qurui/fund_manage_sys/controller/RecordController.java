@@ -42,5 +42,8 @@ public class RecordController {
         return recordService.submitRecord(record);
     }
 
-
+    @RequestMapping(path = "/getRecordsPerCate", method= RequestMethod.GET)
+    public Map<String, Object> getRecordsPerCate(){
+        return recordService.getRecordsPerCate();
+    }
 }

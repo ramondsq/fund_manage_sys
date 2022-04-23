@@ -22,4 +22,6 @@ public interface ProjectDao {
     Project checkIfExist(Project project);
 
     int refreshBalance(int project_id, double amount);
+
+    double getBalanceById(int project_id);
 }

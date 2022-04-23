@@ -71,6 +71,9 @@
             <if test="fund_manager != null">
                 fund_manager,
             </if>
+            <if test="fund_audit != 0">
+                fund_audit,
+            </if>
             <if test="fund_proj_id != 0">
                 fund_proj_id,
             </if>
@@ -89,6 +92,9 @@
             <if test="fund_manager != null">
                 #{fund_manager},
             </if>
+            <if test="fund_audit != 0">
+                #{fund_audit},
+            </if>
             <if test="fund_proj_id != 0">
                 #{fund_proj_id},
             </if>
@@ -98,4 +104,10 @@
         delete from record
         where fund_proj_id = #{fund_proj_id}
     </delete>
+    <select id="getSumByCate" resultType="Double">
+        select COALESCE(sum(fund_amount),0)
+        from record
+        where fund_category_id = #{fund_category_id}
+          and fund_audit = 2
+    </select>
 </mapper>
