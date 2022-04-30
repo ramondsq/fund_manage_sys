@@ -119,7 +119,7 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
-    public Map<String, Object> getRecordsPerCate() {
+    public Map<String, Object> getRecordsPerCate(Record record) {
         Category category = new Category();
         List<Map<String, Object>> list = categoryDao.getCategoriesBy(category);
 
@@ -129,9 +129,18 @@ public class RecordServiceImpl implements RecordService {
             mapOut.put("code", "1");
             List<Map<String, Object>> data = new ArrayList<>();
             for (Map<String, Object> map : list) {
+                if (map.get("category_id").toString().equals("20010")) {
+                    continue;
+                }
+                Record tempRecord = new Record();
+
                 String category_name = map.get("category_name").toString();
                 String category_id = map.get("category_id").toString();
-                double sum = recordDao.getSumByCate(Integer.parseInt(category_id));
+
+                tempRecord.setFund_category_id(Integer.parseInt(category_id));
+                tempRecord.setFund_proj_id(record.getFund_proj_id());
+
+                double sum = recordDao.getSumByCate(tempRecord);
                 Map<String, Object> category_sum = new HashMap<>();
                 category_sum.put("category_name", category_name);
                 category_sum.put("amount", -sum);

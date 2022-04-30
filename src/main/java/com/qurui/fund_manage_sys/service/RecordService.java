@@ -11,5 +11,5 @@ public interface RecordService {
     Map<String, String> deleteRecord(Record record);
     Map<String, String> modifyRecord(Record record);
     Map<String, String> submitRecord(Record record);
-    Map<String, Object> getRecordsPerCate();
+    Map<String, Object> getRecordsPerCate(Record record);
 }

@@ -107,7 +107,14 @@
     <select id="getSumByCate" resultType="Double">
         select COALESCE(sum(fund_amount),0)
         from record
-        where fund_category_id = #{fund_category_id}
-          and fund_audit = 2
+        <where>
+            <if test="fund_category_id != 0">
+                and fund_category_id = #{fund_category_id}
+            </if>
+            <if test="fund_proj_id != 0">
+                and fund_proj_id = #{fund_proj_id}
+            </if>
+                and fund_audit = 2
+        </where>
     </select>
 </mapper>

@@ -27,5 +27,5 @@ public interface RecordDao {
 
     int deleteRecordByProjId(int fund_proj_id);
 
-    double getSumByCate(int fund_category_id);
+    double getSumByCate(Record record);
 }

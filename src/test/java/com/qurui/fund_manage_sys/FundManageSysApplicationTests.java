@@ -34,7 +34,7 @@ class FundManageSysApplicationTests {
 
     @Test
     void testRecordDao() {
-        System.out.println(recordDao.getSumByCate(20001));
+//        System.out.println(recordDao.getSumByCate(20001));
     }
 
 }
