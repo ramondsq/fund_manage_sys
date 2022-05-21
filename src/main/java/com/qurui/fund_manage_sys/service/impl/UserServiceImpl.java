@@ -4,6 +4,7 @@ import com.qurui.fund_manage_sys.dao.LogDao;
 import com.qurui.fund_manage_sys.dao.UserDao;
 import com.qurui.fund_manage_sys.pojo.User;
 import com.qurui.fund_manage_sys.service.UserService;
+import com.qurui.fund_manage_sys.util.JWTUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,8 +27,10 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> map = new HashMap<>();
 
         if (user != null){
+            String token = JWTUtils.createToken(userLogin.getUser_name());
             map.put("code", "1");
             map.put("user_id", user.getUser_id());
+            map.put("token", token);
             logDao.addLog(user.getUser_id(),"登录");
         }else {
             map.put("code","0");

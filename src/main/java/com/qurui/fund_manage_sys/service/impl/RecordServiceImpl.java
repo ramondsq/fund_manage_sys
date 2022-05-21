@@ -6,6 +6,8 @@ import com.qurui.fund_manage_sys.dao.RecordDao;
 import com.qurui.fund_manage_sys.pojo.Category;
 import com.qurui.fund_manage_sys.pojo.Record;
 import com.qurui.fund_manage_sys.service.RecordService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,6 +27,8 @@ public class RecordServiceImpl implements RecordService {
 
     @Override
     public Map<String, Object> getRecordsBy(Record record) {
+
+
         List<Map<String, Object>> list = recordDao.getRecordsBy(record);
 
         Map<String, Object> map = new HashMap<>();
