@@ -1,6 +1,7 @@
 package com.qurui.fund_manage_sys.service.impl;
 
 import com.qurui.fund_manage_sys.dao.CategoryDao;
+import com.qurui.fund_manage_sys.dao.LogDao;
 import com.qurui.fund_manage_sys.dao.ProjectDao;
 import com.qurui.fund_manage_sys.dao.RecordDao;
 import com.qurui.fund_manage_sys.pojo.Category;
@@ -24,6 +25,8 @@ public class RecordServiceImpl implements RecordService {
     ProjectDao projectDao;
     @Resource
     CategoryDao categoryDao;
+    @Resource
+    LogDao logDao;
 
     @Override
     public Map<String, Object> getRecordsBy(Record record) {
@@ -52,12 +55,15 @@ public class RecordServiceImpl implements RecordService {
 
         Map<String, String> map = new HashMap<>();
 
-        if (balance + originRecord.getFund_amount() < 0) {//看审计通过后余额是否大于0
-            map.put("code", "0");
-            map.put("msg", "余额不足");
-        } else {
+
             if (record.getFund_audit() == 2) {//如果审计通过，则刷新project的balance
-                projectDao.refreshBalance(originRecord.getFund_proj_id(),originRecord.getFund_amount());
+                if (balance + originRecord.getFund_amount() < 0) {//看审计通过后余额是否大于0
+                    map.put("code", "0");
+                    map.put("msg", "余额不足");
+                    return map;
+                } else {
+                    projectDao.refreshBalance(originRecord.getFund_proj_id(),originRecord.getFund_amount());
+                }
             } else if (record.getFund_audit() == 3 && originRecord.getFund_audit() == 2) {//原来是通过了审核现在撤销
                 projectDao.refreshBalance(originRecord.getFund_proj_id(),-originRecord.getFund_amount());
             }
@@ -67,7 +73,7 @@ public class RecordServiceImpl implements RecordService {
             }else {
                 map.put("code", "1");
             }
-        }
+
 
         return map;
     }
@@ -84,6 +90,8 @@ public class RecordServiceImpl implements RecordService {
         Map<String, String> map = new HashMap<>();
 
         if(result == 1) {
+            int uid = projectDao.getProjById(originRecord.getFund_proj_id()).getProject_user_id();
+            logDao.addLog(uid, "删除记录"+record.getFund_id());
             map.put("code", "1");
         }else {
             map.put("code", "0");
@@ -99,6 +107,8 @@ public class RecordServiceImpl implements RecordService {
         Map<String, String> map = new HashMap<>();
 
         if(result == 1) {
+            int uid = projectDao.getProjById(record.getFund_proj_id()).getProject_user_id();
+            logDao.addLog(uid, "修改记录"+record.getFund_id());
             map.put("code", "1");
         }else {
             map.put("code", "0");
@@ -114,6 +124,8 @@ public class RecordServiceImpl implements RecordService {
         Map<String, String> map = new HashMap<>();
 
         if(result == 1) {
+            int uid = projectDao.getProjById(record.getFund_proj_id()).getProject_user_id();
+            logDao.addLog(uid, "添加记录");
             map.put("code", "1");
         }else {
             map.put("code", "0");

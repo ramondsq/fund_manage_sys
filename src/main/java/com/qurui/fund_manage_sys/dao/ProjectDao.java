@@ -24,4 +24,6 @@ public interface ProjectDao {
     int refreshBalance(int project_id, double amount);
 
     double getBalanceById(int project_id);
+
+    Project getProjById(int project_id);
 }
