@@ -137,7 +137,7 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public Map<String, Object> getRecordsPerCate(Record record) {
         Category category = new Category();
-        List<Map<String, Object>> list = categoryDao.getCategoriesBy(category);
+        List<Map<String, Object>> list = categoryDao.getCategoriesBy(category);//获取所有类别
 
         Map<String, Object> mapOut = new HashMap<>();
 
@@ -145,18 +145,17 @@ public class RecordServiceImpl implements RecordService {
             mapOut.put("code", "1");
             List<Map<String, Object>> data = new ArrayList<>();
             for (Map<String, Object> map : list) {
-                if (map.get("category_id").toString().equals("20010")) {
+                if (map.get("category_id").toString().equals("20010")) {//排除“启动资金”项
                     continue;
                 }
-                Record tempRecord = new Record();
 
+                Record tempRecord = new Record();//临时record对象
                 String category_name = map.get("category_name").toString();
                 String category_id = map.get("category_id").toString();
-
                 tempRecord.setFund_category_id(Integer.parseInt(category_id));
                 tempRecord.setFund_proj_id(record.getFund_proj_id());
 
-                double sum = recordDao.getSumByCate(tempRecord);
+                double sum = recordDao.getSumByCate(tempRecord);//获取每个类别的总金额
                 Map<String, Object> category_sum = new HashMap<>();
                 category_sum.put("category_name", category_name);
                 category_sum.put("amount", -sum);
